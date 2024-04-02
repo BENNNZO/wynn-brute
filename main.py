@@ -1,20 +1,41 @@
-import requests, json
+import requests, json, sys
 
 URL = 'https://api.wynncraft.com/v3/item/database?fullResult'
+DATA = json.loads(open("./json/items.json", "r", encoding="utf+8").read())
 
 def main():
-    types()
+    max()
+
+def max():
+    res = {}
+    type = input("[1] Bow\n[2] Wand\n[3] Spear\n[4] Relik\n[5] Dagger\nSelect A Type: ")
+    match type:
+        case "1":
+            type = "bow"
+        case "2":
+            type = "wand"
+        case "3":
+            type = "spear"
+        case "4":
+            type = "relik"
+        case "5":
+            type = "dagger"
+
+    for item in DATA[type]:
+        if res == {}:
+            res = DATA[type][item]
+        if "base" in DATA[type][item] and DATA[type][item]["base"]["averageDPS"] > res["base"]["averageDPS"]:
+            res = DATA[type][item]
+
+    lb()
+    print(f'Name: {res["internalName"]}\nTier: {res["tier"]}\nAvgDamage: {res["base"]["averageDPS"]}')
+    
 
 def types():
-    items = json.loads(open("./json/items.json", "r", encoding="utf+8").read())
-    lb()
-    for item in items:
-        print(f"{item}: {len(items[item])}")
-    lb()
-
+    for item in DATA:
+        print(f"{item}: {len(DATA[item])}")
 
 def fetch_all():
-    lb()
     print(" >>> Fetching All Items!")
     try:
         data = requests.get(URL)
@@ -26,13 +47,14 @@ def fetch_all():
         print(" >>> Successfully Fetched & Wrote Data!")
     except:
         print(" >>> Failed To Get Data :(")
-    lb()
 
 def lb():
     print("------------------------------------------------------------------")
 
 if __name__ == "__main__":
+    lb()
     main()
+    lb()
 
 
 # ------------------------------------------------------------------
