@@ -3,11 +3,96 @@ import requests, json, humanize
 URL = 'https://api.wynncraft.com/v3/item/database?fullResult'
 DATA = json.loads(open("./json/items.json", "r", encoding="utf+8").read())
 
+# CONFIGS
+LEVEL = 95
+WEAPON = "wand"
+ARMOR_SEARCH = "mainAttack"
+WEAPON_SEARCH = "water"
+
 def main():
-    combinations()
+    comb()
+
+def comb():
+    temp_json = {
+        "helmet": {},
+        "chestplate": {},
+        "leggings": {},
+        "boots": {},
+        "weapon": {},
+        "ring": {},
+        "bracelet": {},
+        "necklace": {},
+    }
+    comp_comb = 1
+    for category in DATA:
+        if category in temp_json and category != "weapon":
+            for item in DATA[category]:
+                if DATA[category][item]["requirements"]["level"] > LEVEL:
+                    try:
+                        if DATA[category][item]["identifications"][f"{ARMOR_SEARCH}Damage"]:
+                            if temp_json[category] == {}:
+                                temp_json[category] = DATA[category][item]
+                            try:
+                                if temp_json[category]["identifications"][f"{ARMOR_SEARCH}Damage"]["max"] < DATA[category][item]["identifications"][f"{ARMOR_SEARCH}Damage"]["max"]:
+                                    temp_json[category] = DATA[category][item]
+                            except:
+                                try:
+                                    if temp_json[category]["identifications"][f"{ARMOR_SEARCH}Damage"]["max"] < DATA[category][item]["identifications"][f"{ARMOR_SEARCH}Damage"]:
+                                        temp_json[category] = DATA[category][item]
+                                except:
+                                    try:
+                                        if temp_json[category]["identifications"][f"{ARMOR_SEARCH}Damage"] < DATA[category][item]["identifications"][f"{ARMOR_SEARCH}Damage"]:
+                                            temp_json[category] = DATA[category][item]
+                                    except:
+                                        if temp_json[category]["identifications"][f"{ARMOR_SEARCH}Damage"] < DATA[category][item]["identifications"][f"{ARMOR_SEARCH}Damage"]["max"]:
+                                            temp_json[category] = DATA[category][item]
+                    except KeyError:
+                        pass 
+        if category == WEAPON:
+            for item in DATA[WEAPON]:
+                if DATA[WEAPON][item]["requirements"]["level"] > LEVEL:
+                    try:
+                        if DATA[WEAPON][item]["base"][f"{WEAPON_SEARCH}Damage"]:
+                            if temp_json["weapon"] == {}:
+                                temp_json["weapon"] = DATA[WEAPON][item]
+                            elif temp_json["weapon"]["base"][f"{WEAPON_SEARCH}Damage"]["max"] < DATA[WEAPON][item]["base"][f"{WEAPON_SEARCH}Damage"]["max"]:
+                                temp_json["weapon"] = DATA[WEAPON][item]
+                    except KeyError:
+                        pass 
+
+    # print(comp_comb)
+    # print(humanize.intword(comp_comb))
+    f = open("./json/elegable.json", "w", encoding="utf+8")
+    f.write(json.dumps(temp_json, indent=4))
+    total_dmg = 0
+    for item in temp_json:
+        print(f"------ {item} ------")
+        print(f"Name: {temp_json[item]['internalName']}")
+        print(f"Tier: {temp_json[item]['tier']}")
+        try:
+            print(f"Pwdr: {temp_json[item]['powderSlots']}")
+        except:
+            pass
+        try:
+            print(f"DmgM: {temp_json[item]['base'][f'{WEAPON_SEARCH}Damage']['max']}")
+        except:
+            pass
+        try:
+            print(f"DmgM: {temp_json[item]['identifications'][f'{ARMOR_SEARCH}Damage']['max']}%")
+            total_dmg += temp_json[item]['identifications'][f'{ARMOR_SEARCH}Damage']['max']
+        except:
+            try:
+                print(f"DmgM: {temp_json[item]['identifications'][f'{ARMOR_SEARCH}Damage']}%")
+                total_dmg += temp_json[item]['identifications'][f'{ARMOR_SEARCH}Damage']
+            except:
+                pass
+
+        # print(f"-------{'-'*len(item)}-------")
+    print(f"Total Dmg%: {total_dmg}%")
+
 
 def lb():
-    print("------------------------------------------------------------------")
+    print("-------------------------------------------------------------------")
 
 if __name__ == "__main__":
     lb()
