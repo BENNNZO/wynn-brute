@@ -1,4 +1,4 @@
-import requests, json, humanize
+import requests, json, humanize, os, itertools, time
 
 URL = 'https://api.wynncraft.com/v3/item/database?fullResult'
 DATA = json.loads(open("./json/items.json", "r", encoding="utf+8").read())
@@ -14,39 +14,106 @@ def inputs():
     # weapon = input(" > Weapon:   ")
     # elemnt = input(" > Element:  ")
     # itemFinder(lvlMin, lvlMax, weapon, elemnt)
-    itemFinder(100, 100, "wand", "water")
+    item_search(97, 97, "wand", "water")
 
-def itemFinder(lvlMin, lvlMax, weapon, element):
-    print(" >>> Item Finder")
-    itemLists = {"helmet": {}, "chestplate": {}, "leggings": {}, "boots": {}, "ring": {}, "bracelet": {}, "necklace": {}, "weapon": {}}
+def item_search(lvlMin, lvlMax, weaponArg, element):
+    print(" >>> Item Search")
+    itemDict = {"helmet": [], "chestplate": [], "leggings": [], "boots": [], "ring": [], "bracelet": [], "necklace": [], "weapon": []}
     diffComb = 1
 
     # test every wynn item according to users options
-    for item_type in DATA:
-        if item_type in itemLists or item_type == weapon: # rule out crafting materials and other weapon types
-            for item in DATA[item_type]: # for each item do tests
-                dataItem = DATA[item_type][item]
+    for itemType in DATA:
+        if itemType in itemDict or itemType == weaponArg: # rule out crafting materials and other weapon types
+            for item in DATA[itemType]: # for each item do tests
+                dataItem = DATA[itemType][item]
                 if dataItem["requirements"]["level"] >= lvlMin and dataItem["requirements"]["level"] <= lvlMax: # level requirements
                     # TODO add more tests later
-                    itemLists[item_type if item_type != weapon else "weapon"][item] = dataItem
+                    itemDict[itemType if itemType != weaponArg else "weapon"].append(dataItem)
 
     # calc amount of diff combinations to test
-    for list in itemLists: 
-        diffComb *= len(itemLists[list])
+    for list in itemDict: 
+        diffComb *= len(itemDict[list])
 
     # ask user if they want to procede
     if input(f" [ARE YOU SURE] There Are {humanize.intword(diffComb)} Different Combinations to Calculate (y/n): ") == "y": 
-        damageCalc(itemLists)
+        build_search(itemDict, diffComb)
     else:
         inputs()
 
+def build_search(itemDict, diffComb):
+    print(" >>> Set Finder")
 
+    helmet = ["No helmet"] if itemDict.get("helmet") == None else itemDict["helmet"]
+    chestplate = ["No chestplate"] if itemDict.get("chestplate") == None else itemDict["chestplate"]
+    leggings = ["No leggings"] if itemDict.get("leggings") == None else itemDict["leggings"]
+    boots = ["No boots"] if itemDict.get("boots") == None else itemDict["boots"]
+    ring = ["No ring"] if itemDict.get("ring") == None else itemDict["ring"]
+    bracelet = ["No bracelet"] if itemDict.get("bracelet") == None else itemDict["bracelet"]
+    necklace = ["No necklace"] if itemDict.get("necklace") == None else itemDict["necklace"]
+    weapon = ["No weapon"] if itemDict.get("weapon") == None else itemDict["weapon"]
 
-def damageCalc(itemLists):
-    # helmet, chestplate, leggings, boots, ring, bracelet, necklace
-    poison_dmg = 0
+    buildList = list(itertools.product(helmet, chestplate, leggings, boots, ring, bracelet, necklace, weapon))
+
+    bestBuild = [0, []]
+
+    start = time.perf_counter()
+    for i, build in enumerate(buildList):
+        print(f"{round(((i / diffComb) * 100), 2)}% Done")
+        results = damage_calc(build)
+        if results[0] > bestBuild[0]:
+            bestBuild = results
+    stop = time.perf_counter()
+    # os.system('cls' if os.name == 'nt' else 'clear')
+    # print(f"{i} Calculated")
+
+    # 20.41542379999737s without enumeration
+    # 20.30976660000306s with enumeration
+
+    # print(f"Elapsed time: {stop, start}")
+    print(f"Elapsed time: {stop - start}")
+    f = open("./json/elegable.json", "w", encoding="utf+8")
+    f.write(json.dumps(bestBuild, indent=4))
+
+def damage_calc(build):
+    helmt = build[0]
+    chest = build[1]
+    leggs = build[2]
+    boots = build[3]
+    rings = build[4]
+    brace = build[5]
+    necks = build[6]
+    weapn = build[7]
+
+    damage = 0
     
-    print(" >>> Damage Calculation")
+    damage += find_value(helmt, "waterDamage")
+    damage += find_value(chest, "waterDamage")
+    damage += find_value(leggs, "waterDamage")
+    damage += find_value(boots, "waterDamage")
+    damage += find_value(rings, "waterDamage")
+    damage += find_value(brace, "waterDamage")
+    damage += find_value(necks, "waterDamage")
+    damage += find_value(weapn, "waterDamage")
+
+    return [damage, build]
+
+def find_value(data, key):
+    if not isinstance(data, dict):
+        return 0
+
+    try:
+        return data[key]
+    except KeyError:
+        for sub_data in data.values():
+            sub_value = find_value(sub_data, key)
+            if type(sub_value) == dict:
+                return sub_value["max"]
+            elif sub_value is not 0:
+                return sub_value
+
+    return 0
+
+
 
 def lb():
     print("-------------------------------------------------------------------")
@@ -57,7 +124,7 @@ if __name__ == "__main__":
     lb()
 
 # ----------------------------------- TODO ----------------------------------- #
-# 1. section out necklace, brace, and ring aswell 
+# 1. section out necklace, bracelet, and ring aswell 
 
 # --------------------------- THINGS TO ACCOUNT FOR -------------------------- #
 # Powder Slots
@@ -68,14 +135,14 @@ if __name__ == "__main__":
 # helmet: 423
 # bow: 345
 # wand: 339
-# chestplate: 385
+# chestplateplate: 385
 # necklace: 199
 # dagger: 349
 # spear: 348
 # relik: 301
 # ring: 261
 # boots: 350
-# bracelet: 206
+# braceletlet: 206
 # leggings: 351
 # other: 1215
 # TOTAL: 5072
@@ -152,12 +219,12 @@ if __name__ == "__main__":
 # def comb():
 #     temp_json = {
 #         "helmet": {},
-#         "chestplate": {},
+#         "chestplateplate": {},
 #         "leggings": {},
 #         "boots": {},
 #         "weapon": {},
 #         "ring": {},
-#         "bracelet": {},
+#         "braceletlet": {},
 #         "necklace": {},
 #     }
 #     comp_comb = 1

@@ -1,424 +1,362 @@
-{
-    "helmet": {
-        "tier": "rare",
-        "type": "helmet",
-        "dropRestriction": "never",
-        "restrictions": "Untradable",
-        "armorType": "diamond",
-        "internalName": "Dissociation",
-        "dropMeta": {
-            "coordinates": [
-                1332,
-                11,
-                -516
-            ],
-            "name": "Bottomless Pit",
-            "type": "altar"
+[
+    316,
+    [
+        {
+            "tier": "rare",
+            "type": "helmet",
+            "dropRestriction": "normal",
+            "armorType": "diamond",
+            "internalName": "Spectrum",
+            "base": {
+                "health": 3300,
+                "fireDefence": 50,
+                "waterDefence": 50,
+                "airDefence": 50,
+                "thunderDefence": 50,
+                "earthDefence": 50
+            },
+            "requirements": {
+                "level": 97,
+                "strength": 20,
+                "dexterity": 20,
+                "intelligence": 20,
+                "agility": 20,
+                "defence": 20
+            },
+            "identifications": {
+                "earthDamage": {
+                    "min": 7,
+                    "max": 30,
+                    "raw": 23
+                },
+                "thunderDamage": {
+                    "min": 7,
+                    "max": 30,
+                    "raw": 23
+                },
+                "waterDamage": {
+                    "min": 7,
+                    "max": 30,
+                    "raw": 23
+                },
+                "fireDamage": {
+                    "min": 7,
+                    "max": 30,
+                    "raw": 23
+                },
+                "airDamage": {
+                    "min": 7,
+                    "max": 30,
+                    "raw": 23
+                }
+            }
         },
-        "requirements": {
-            "level": 101
+        {
+            "tier": "rare",
+            "powderSlots": 2,
+            "type": "chestplate",
+            "dropRestriction": "normal",
+            "armorType": "diamond",
+            "internalName": "Leviathan",
+            "base": {
+                "health": 2850,
+                "waterDefence": 90,
+                "airDefence": -90,
+                "thunderDefence": -100,
+                "earthDefence": 100
+            },
+            "requirements": {
+                "level": 97,
+                "strength": 45,
+                "intelligence": 45
+            },
+            "identifications": {
+                "rawStrength": 12,
+                "raw3rdSpellCost": {
+                    "min": -1,
+                    "max": -4,
+                    "raw": -3
+                },
+                "rawAttackSpeed": 1,
+                "stealing": {
+                    "min": 2,
+                    "max": 9,
+                    "raw": 7
+                },
+                "earthDamage": {
+                    "min": 6,
+                    "max": 25,
+                    "raw": 19
+                },
+                "waterDamage": {
+                    "min": 6,
+                    "max": 25,
+                    "raw": 19
+                },
+                "thunderDefence": {
+                    "min": -13,
+                    "max": -7,
+                    "raw": -10
+                }
+            }
         },
-        "identifications": {
-            "rawStrength": -35,
-            "rawIntelligence": -20,
-            "rawDefence": -35,
-            "mainAttackDamage": {
-                "min": 18,
-                "max": 78,
-                "raw": 60
+        {
+            "tier": "unique",
+            "powderSlots": 3,
+            "type": "leggings",
+            "dropRestriction": "normal",
+            "armorType": "diamond",
+            "internalName": "Resistance",
+            "base": {
+                "health": 3200,
+                "thunderDefence": 100,
+                "earthDefence": 175
             },
-            "rawSpellDamage": {
-                "min": 69,
-                "max": 300,
-                "raw": 231
+            "requirements": {
+                "level": 97,
+                "dexterity": 60
             },
-            "rawHealth": {
-                "min": 1065,
-                "max": 4615,
-                "raw": 3550
+            "identifications": {
+                "manaSteal": {
+                    "min": 4,
+                    "max": 16,
+                    "raw": 12
+                },
+                "thorns": {
+                    "min": 4,
+                    "max": 17,
+                    "raw": 13
+                },
+                "reflection": {
+                    "min": 3,
+                    "max": 12,
+                    "raw": 9
+                },
+                "thunderDamage": {
+                    "min": -19,
+                    "max": -10,
+                    "raw": -15
+                },
+                "earthDefence": {
+                    "min": 6,
+                    "max": 26,
+                    "raw": 20
+                },
+                "thunderDefence": {
+                    "min": 6,
+                    "max": 26,
+                    "raw": 20
+                }
+            }
+        },
+        {
+            "tier": "mythic",
+            "powderSlots": 2,
+            "type": "boots",
+            "lore": "Wybels have a strange attraction to cosmic magic, and many an owner will find them staring through the window at night. One, however, claims to have seen her Wybel making something out of white stardust. The abode was robbed shortly after, and the supposed item gone missing without confirmation of its existence.",
+            "dropRestriction": "normal",
+            "armorType": "diamond",
+            "internalName": "Stardew",
+            "base": {
+                "health": 4075,
+                "fireDefence": -100,
+                "waterDefence": 150,
+                "airDefence": -100,
+                "thunderDefence": 150,
+                "earthDefence": -100
             },
-            "manaRegen": {
-                "min": 4,
-                "max": 16,
-                "raw": 12
+            "requirements": {
+                "level": 97,
+                "dexterity": 65,
+                "intelligence": 75
             },
-            "raw3rdSpellCost": {
-                "min": -1,
-                "max": -6,
-                "raw": -5
+            "identifications": {
+                "rawSpellDamage": {
+                    "min": 94,
+                    "max": 407,
+                    "raw": 313
+                },
+                "manaRegen": {
+                    "min": -12,
+                    "max": -6,
+                    "raw": -9
+                },
+                "manaSteal": {
+                    "min": 5,
+                    "max": 20,
+                    "raw": 15
+                },
+                "reflection": {
+                    "min": 8,
+                    "max": 33,
+                    "raw": 25
+                },
+                "thunderDamage": {
+                    "min": 11,
+                    "max": 46,
+                    "raw": 35
+                },
+                "waterDamage": {
+                    "min": 11,
+                    "max": 46,
+                    "raw": 35
+                }
+            }
+        },
+        {
+            "material": "259:15",
+            "tier": "unique",
+            "dropRestriction": "lootchest",
+            "accessoryType": "ring",
+            "internalName": "Fehu",
+            "requirements": {
+                "level": 97
             },
-            "thunderDefence": {
-                "min": 23,
-                "max": 98,
-                "raw": 75
+            "identifications": {
+                "xpBonus": {
+                    "min": 2,
+                    "max": 9,
+                    "raw": 7
+                },
+                "lootBonus": {
+                    "min": 4,
+                    "max": 17,
+                    "raw": 13
+                }
+            }
+        },
+        {
+            "material": "259:35",
+            "tier": "rare",
+            "identified": true,
+            "dropRestriction": "never",
+            "restrictions": "Untradable",
+            "accessoryType": "bracelet",
+            "internalName": "Clockwork",
+            "dropMeta": {
+                "coordinates": [
+                    373,
+                    64,
+                    -5497
+                ],
+                "name": "The Qira Hive",
+                "type": "quest"
             },
-            "airDefence": {
-                "min": 23,
-                "max": 98,
-                "raw": 75
+            "base": {
+                "health": 1500,
+                "fireDefence": 60,
+                "waterDefence": 30,
+                "airDefence": 30,
+                "thunderDefence": 30,
+                "earthDefence": 30
+            },
+            "requirements": {
+                "level": 97,
+                "defence": 60
+            },
+            "identifications": {
+                "healthRegen": 20,
+                "thorns": 20,
+                "reflection": 20
+            }
+        },
+        {
+            "material": "259:21",
+            "tier": "unique",
+            "dropRestriction": "lootchest",
+            "accessoryType": "necklace",
+            "internalName": "Founder",
+            "base": {
+                "health": 500,
+                "airDefence": -50,
+                "earthDefence": 50
+            },
+            "requirements": {
+                "level": 97,
+                "strength": 25,
+                "defence": 35
+            },
+            "identifications": {
+                "rawStrength": 5,
+                "rawDefence": 4,
+                "healthRegen": {
+                    "min": 4,
+                    "max": 16,
+                    "raw": 12
+                },
+                "rawHealth": {
+                    "min": 81,
+                    "max": 351,
+                    "raw": 270
+                },
+                "walkSpeed": {
+                    "min": -8,
+                    "max": -4,
+                    "raw": -6
+                }
+            }
+        },
+        {
+            "material": "269:19",
+            "tier": "rare",
+            "powderSlots": 2,
+            "type": "wand",
+            "dropRestriction": "normal",
+            "attackSpeed": "very_slow",
+            "internalName": "Manablast",
+            "base": {
+                "waterDamage": {
+                    "min": 180,
+                    "max": 215
+                },
+                "thunderDamage": {
+                    "min": 180,
+                    "max": 215
+                },
+                "averageDPS": 328
+            },
+            "requirements": {
+                "level": 97,
+                "dexterity": 40,
+                "intelligence": 40
+            },
+            "identifications": {
+                "mainAttackDamage": {
+                    "min": -26,
+                    "max": -14,
+                    "raw": -20
+                },
+                "rawMainAttackDamage": {
+                    "min": -305,
+                    "max": -164,
+                    "raw": -235
+                },
+                "spellDamage": {
+                    "min": 6,
+                    "max": 26,
+                    "raw": 20
+                },
+                "rawSpellDamage": {
+                    "min": 69,
+                    "max": 300,
+                    "raw": 231
+                },
+                "manaRegen": {
+                    "min": 4,
+                    "max": 16,
+                    "raw": 12
+                },
+                "manaSteal": {
+                    "min": -16,
+                    "max": -8,
+                    "raw": -12
+                },
+                "exploding": {
+                    "min": 6,
+                    "max": 26,
+                    "raw": 20
+                }
             }
         }
-    },
-    "chestplate": {
-        "tier": "legendary",
-        "type": "chestplate",
-        "lore": "The hide of the Touroto, an almost invincible Bull-like creature, is said to be pierced only by the horn of the Touroto itself, making it extremely valuable.",
-        "dropRestriction": "normal",
-        "armorType": "diamond",
-        "internalName": "Taurus",
-        "base": {
-            "health": 4000,
-            "fireDefence": -80,
-            "earthDefence": 200
-        },
-        "requirements": {
-            "level": 96,
-            "strength": 90
-        },
-        "identifications": {
-            "rawStrength": 15,
-            "mainAttackDamage": {
-                "min": 15,
-                "max": 65,
-                "raw": 50
-            },
-            "rawMainAttackDamage": {
-                "min": 450,
-                "max": 1950,
-                "raw": 1500
-            },
-            "rawAttackSpeed": {
-                "min": -26,
-                "max": -14,
-                "raw": -20
-            },
-            "exploding": {
-                "min": 9,
-                "max": 39,
-                "raw": 30
-            }
-        }
-    },
-    "leggings": {
-        "tier": "legendary",
-        "powderSlots": 2,
-        "type": "leggings",
-        "lore": "With threads of fundamentally opposing magic delicately woven together, these ornately-crafted greaves are given only to those who have bested the Mistress of the Hive.",
-        "identified": true,
-        "dropRestriction": "never",
-        "restrictions": "Untradable",
-        "armorType": "diamond",
-        "internalName": "Chaos-Woven Greaves",
-        "dropMeta": {
-            "coordinates": [
-                373,
-                64,
-                -5497
-            ],
-            "name": "The Qira Hive",
-            "type": "quest"
-        },
-        "base": {
-            "health": 4200,
-            "waterDefence": 100,
-            "thunderDefence": 100,
-            "earthDefence": 100
-        },
-        "requirements": {
-            "level": 100,
-            "quest": "The Qira Hive",
-            "strength": 40,
-            "dexterity": 40,
-            "intelligence": 40
-        },
-        "identifications": {
-            "rawDefence": -30,
-            "rawAgility": -30,
-            "mainAttackDamage": 50,
-            "spellDamage": 50,
-            "poison": 7250,
-            "manaSteal": 12,
-            "earthDamage": 30,
-            "thunderDamage": 30,
-            "waterDamage": 30,
-            "earthDefence": 5,
-            "thunderDefence": 5,
-            "waterDefence": 5
-        }
-    },
-    "boots": {
-        "tier": "mythic",
-        "powderSlots": 3,
-        "type": "boots",
-        "lore": "Sheer strength exudes from these Orcish relics, simple sandals ill-fitting to humans or Villagers. Enchanted with power and rage rather than magic, the strength that is provided when they are worn is unparalleled.",
-        "dropRestriction": "normal",
-        "armorType": "diamond",
-        "internalName": "Warchief",
-        "base": {
-            "health": 5225,
-            "fireDefence": -100,
-            "waterDefence": -100,
-            "airDefence": -100,
-            "thunderDefence": -150,
-            "earthDefence": -150
-        },
-        "requirements": {
-            "level": 98,
-            "strength": 80,
-            "dexterity": 80
-        },
-        "identifications": {
-            "rawStrength": 20,
-            "rawDexterity": 10,
-            "mainAttackDamage": {
-                "min": 12,
-                "max": 52,
-                "raw": 40
-            },
-            "rawMainAttackDamage": {
-                "min": 95,
-                "max": 410,
-                "raw": 315
-            },
-            "walkSpeed": {
-                "min": -19,
-                "max": -10,
-                "raw": -15
-            },
-            "exploding": {
-                "min": 11,
-                "max": 46,
-                "raw": 35
-            },
-            "earthDamage": {
-                "min": 12,
-                "max": 52,
-                "raw": 40
-            },
-            "thunderDamage": {
-                "min": 15,
-                "max": 65,
-                "raw": 50
-            }
-        }
-    },
-    "weapon": {
-        "material": "269:19",
-        "tier": "mythic",
-        "powderSlots": 15,
-        "type": "wand",
-        "lore": "The existence of all things is reflected in the otherworldly jewels of this grand staff, dense enough to have its own gravitational pull. Users have reported their limbs being stretched after usage.",
-        "dropRestriction": "normal",
-        "attackSpeed": "super_slow",
-        "internalName": "Singularity",
-        "base": {
-            "fireDamage": {
-                "min": 125,
-                "max": 275
-            },
-            "waterDamage": {
-                "min": 150,
-                "max": 250
-            },
-            "airDamage": {
-                "min": 100,
-                "max": 300
-            },
-            "thunderDamage": {
-                "min": 75,
-                "max": 325
-            },
-            "earthDamage": {
-                "min": 175,
-                "max": 225
-            },
-            "averageDPS": 510
-        },
-        "requirements": {
-            "level": 99,
-            "strength": 42,
-            "dexterity": 42,
-            "intelligence": 42,
-            "agility": 42,
-            "defence": 42
-        },
-        "identifications": {
-            "rawDexterity": 35,
-            "mainAttackDamage": {
-                "min": 5,
-                "max": 20,
-                "raw": 15
-            },
-            "rawMainAttackDamage": {
-                "min": 133,
-                "max": 577,
-                "raw": 444
-            },
-            "spellDamage": {
-                "min": 3,
-                "max": 13,
-                "raw": 10
-            },
-            "rawSpellDamage": {
-                "min": 67,
-                "max": 289,
-                "raw": 222
-            },
-            "healthRegenRaw": {
-                "min": 75,
-                "max": 325,
-                "raw": 250
-            },
-            "walkSpeed": {
-                "min": -52,
-                "max": -28,
-                "raw": -40
-            }
-        }
-    },
-    "ring": {
-        "material": "259:17",
-        "tier": "rare",
-        "dropRestriction": "lootchest",
-        "accessoryType": "ring",
-        "internalName": "Facile",
-        "requirements": {
-            "level": 99,
-            "strength": 10,
-            "dexterity": 10,
-            "intelligence": 10,
-            "agility": 10,
-            "defence": 10
-        },
-        "identifications": {
-            "rawStrength": 2,
-            "rawDexterity": 2,
-            "rawIntelligence": 2,
-            "rawDefence": 2,
-            "rawAgility": 2,
-            "mainAttackDamage": {
-                "min": 2,
-                "max": 8,
-                "raw": 6
-            },
-            "spellDamage": {
-                "min": 2,
-                "max": 8,
-                "raw": 6
-            },
-            "healthRegen": {
-                "min": 2,
-                "max": 10,
-                "raw": 8
-            }
-        }
-    },
-    "bracelet": {
-        "material": "259:35",
-        "tier": "legendary",
-        "lore": "Power, but at what cost?",
-        "dropRestriction": "lootchest",
-        "accessoryType": "bracelet",
-        "majorIds": {
-            "name": "Madness",
-            "description": "&b+Madness: &3Casts a random spell of your class every 3 seconds"
-        },
-        "internalName": "Pandemonium",
-        "base": {
-            "health": -300,
-            "fireDefence": -200,
-            "waterDefence": -200,
-            "airDefence": -200,
-            "thunderDefence": -200,
-            "earthDefence": -200
-        },
-        "requirements": {
-            "level": 99,
-            "quest": "???\u058e",
-            "strength": 45,
-            "dexterity": 45,
-            "intelligence": 45,
-            "agility": 45,
-            "defence": 45
-        },
-        "identifications": {
-            "mainAttackDamage": {
-                "min": 5,
-                "max": 21,
-                "raw": 16
-            },
-            "rawMainAttackDamage": {
-                "min": 11,
-                "max": 46,
-                "raw": 35
-            },
-            "spellDamage": {
-                "min": 5,
-                "max": 21,
-                "raw": 16
-            },
-            "rawSpellDamage": {
-                "min": 17,
-                "max": 72,
-                "raw": 55
-            },
-            "rawHealth": {
-                "min": -1300,
-                "max": -700,
-                "raw": -1000
-            },
-            "lifeSteal": {
-                "min": -78,
-                "max": -42,
-                "raw": -60
-            },
-            "walkSpeed": {
-                "min": 2,
-                "max": 9,
-                "raw": 7
-            },
-            "soulPointRegen": {
-                "min": -156,
-                "max": -84,
-                "raw": -120
-            }
-        }
-    },
-    "necklace": {
-        "material": "259:34",
-        "tier": "rare",
-        "dropRestriction": "lootchest",
-        "accessoryType": "necklace",
-        "internalName": "Achromatic Gloom",
-        "requirements": {
-            "level": 98
-        },
-        "identifications": {
-            "rawStrength": -4,
-            "rawDexterity": -4,
-            "rawIntelligence": -4,
-            "rawDefence": -4,
-            "rawAgility": -4,
-            "mainAttackDamage": {
-                "min": 4,
-                "max": 18,
-                "raw": 14
-            },
-            "rawMainAttackDamage": {
-                "min": 20,
-                "max": 85,
-                "raw": 65
-            },
-            "spellDamage": {
-                "min": 4,
-                "max": 18,
-                "raw": 14
-            },
-            "rawSpellDamage": {
-                "min": 26,
-                "max": 111,
-                "raw": 85
-            }
-        }
-    }
-}
+    ]
+]
